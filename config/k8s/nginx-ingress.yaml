@@ -17,3 +17,10 @@ spec:
                 name: spring-admin
                 port:
                   number: 8081
+          - path: /video-card-price-aggregator
+            pathType: Prefix
+            backend:
+              service:
+                name: video-card-price-aggregator
+                port:
+                  number: 8081
