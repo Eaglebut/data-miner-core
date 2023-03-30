@@ -1,0 +1,35 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${DATASOURCE_HOST:localhost}:5444/db-video-cards
+    username: admin
+    password: admin
+  jpa:
+    database: postgresql
+  jooq:
+    sql-dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  #TODO Переименовать это при копировании
+  application:
+    name: basic-java-microservice
+
+  boot:
+    admin:
+      client:
+        instance:
+          service-host-type: ip
+        url: http://${DATASOURCE_HOST:localhost}:8081
+  data:
+    rest:
+      #TODO Переименовать это при копировании
+      base-path: /basic-java-microservice
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+

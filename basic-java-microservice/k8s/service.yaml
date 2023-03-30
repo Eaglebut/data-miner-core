@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  #TODO Переименовать это при копировании
+  name: basic-java-microservice
+  labels:
+    #TODO Переименовать это при копировании
+    app: basic-java-microservice
+    coreApp: data-miner
+    type: aggregator
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      #TODO Переименовать это при копировании
+      app: basic-java-microservice
+  template:
+    metadata:
+      labels:
+        #TODO Переименовать это при копировании
+        app: basic-java-microservice
+    spec:
+      containers:
+          #TODO Переименовать это при копировании
+        - name: basic-java-microservice
+          #TODO Переименовать это при копировании
+          image: eaglebut/basic-java-microservice:0.0.3
+          ports:
+            - containerPort: 8080
+          env:
+            - name: logging.level.org.springframework
+              value: DEBUG
+            - name: spring.boot.admin.client.url
+              value: http://10.1.0.69:8081/spring-admin
+            - name: spring.datasource.url
+              #TODO Переименовать это при копировании
+              value: jdbc:postgresql://192.168.0.103:5444/db-video-cards
+---
+apiVersion: v1
+kind: Service
+metadata:
+  #TODO Переименовать это при копировании
+  name: video-card-price-aggregator
+  labels:
+    #TODO Переименовать это при копировании
+    name: video-card-price-aggregator-service
+spec:
+  selector:
+    #TODO Переименовать это при копировании
+    app: video-card-price-aggregator
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
