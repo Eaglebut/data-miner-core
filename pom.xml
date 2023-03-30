@@ -10,7 +10,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>eureka-server</module>
+        <module>spring-admin</module>
+        <module>video_card_price_aggregator</module>
     </modules>
 
     <properties>
