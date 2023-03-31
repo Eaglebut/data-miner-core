@@ -12,6 +12,7 @@
     <modules>
         <module>spring-admin</module>
         <module>basic-java-microservice</module>
+        <module>video-cards</module>
     </modules>
 
     <properties>
